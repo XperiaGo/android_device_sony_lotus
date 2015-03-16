@@ -103,6 +103,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ste.video.decoder.h264.max.lev=3.2
 
 
+# Disable atlas service on low-ram devices
+PRODUCT_PROPERTY_OVERRIDES += \
+  config.disable_atlas=true
+
 # Device specific proprieties
 # References: 
 # - http://source.android.com/devices/tuning.html
