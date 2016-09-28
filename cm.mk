@@ -24,8 +24,8 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Build fingerprints
 PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_NAME=ST27i \
-PRIVATE_BUILD_DESC="ST27i-user test-keys" \
-BUILD_FINGERPRINT="SEMC/ST27i:user/release-keys"
+PRIVATE_BUILD_DESC="ST27i-user 4.1.2 6.2.A.1.100 m_v_zg test-keys" \
+BUILD_FINGERPRINT="SEMC/ST27i_1264-5547/ST27i:4.1.2/6.2.A.1.100/m_v_zg:user/release-keys"
 
 # Device identifier
 PRODUCT_NAME := cm_lotus
