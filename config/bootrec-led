@@ -7,37 +7,53 @@ busybox echo '0' > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/blue/bright
 busybox echo '0' > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/button-backlight/brightness
 
 # In animaton
-b=0
-
-for i in $(/sbin/busybox seq 0 3 255)
+# Red
+for i in $(busybox seq 0 3 255)
 do
     busybox echo $i > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/red/brightness
-    busybox echo $b > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/button-backlight/brightness
-    b=$(($b + 1))
+    busybox echo $i > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/button-backlight/brightness
 done
 
-for i in $(/sbin/busybox seq 0 3 255)
+# Yellow
+for i in $(busybox seq 0 3 255)
 do
     busybox echo $i > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/green/brightness
-    busybox echo $b > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/button-backlight/brightness
-    b=$(($b + 1))
 done
 
-for i in $(/sbin/busybox seq 0 3 255)
+# Green
+for i in $(busybox seq 0 3 255)
 do
     j=$((255 - $i))
-    busybox echo $j > sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/red/brightness
-    busybox echo $b > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/button-backlight/brightness
-    b=$(($b + 1))
+    busybox echo $j > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/red/brightness
+done
+
+# Cyan
+for i in $(busybox seq 0 3 255)
+do
+    busybox echo $i > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/blue/brightness
+done
+
+# Blue
+for i in $(busybox seq 0 3 255)
+do
+    j=$((255 - $i))
+    busybox echo $j > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/green/brightness
+done
+
+# Magenta
+for i in $(busybox seq 0 3 255)
+do
+    busybox echo $i > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/red/brightness
 done
 
 # Trigger vibration
 busybox echo '50' > /sys/class/timed_output/vibrator/enable
 
 # Out animaton
-for i in $(/sbin/busybox seq 0 255)
+for i in $(busybox seq 0 255)
 do
     j=$((255 - $i))
-    busybox echo $j > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/green/brightness
+    busybox echo $j > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/red/brightness
+    busybox echo $j > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/blue/brightness
     busybox echo $j > /sys/devices/platform/nmk-i2c.2/i2c-2/2-0040/leds/button-backlight/brightness
 done
